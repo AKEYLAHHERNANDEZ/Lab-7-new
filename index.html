@@ -21,12 +21,15 @@
         const locationResponse = await fetch(`https://ipapi.co/${ipAddress}/json/`);
         const locationData = await locationResponse.json();
 
+        // Define the CORS Anywhere proxy URL
+        const corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
+
         // Third API call: Get weather using the first IP address
-        const weatherResponse1 = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locationData.city}&appid=ce230d3453722e45c36186794eb042dc`);
+        const weatherResponse1 = await fetch(`${corsAnywhere}https://api.openweathermap.org/data/2.5/weather?q=${locationData.city}&appid=ce230d3453722e45c36186794eb042dc`);
         const weatherData1 = await weatherResponse1.json();
 
         // Fourth API call: Get weather using the second API call location
-        const weatherResponse2 = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locationData.region}&appid=ce230d3453722e45c36186794eb042dc`);
+        const weatherResponse2 = await fetch(`${corsAnywhere}https://api.openweathermap.org/data/2.5/weather?q=${locationData.region}&appid=ce230d3453722e45c36186794eb042dc`);
         const weatherData2 = await weatherResponse2.json();
 
         // Log the results to the console
