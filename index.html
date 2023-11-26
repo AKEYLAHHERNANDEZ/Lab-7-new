@@ -9,30 +9,25 @@
   <h1>API Calls Demo</h1>
 
   <script>
-    // Function to make API requests
     async function makeApiRequests() {
       try {
-        // First API call: Get public IP address
         const ipResponse = await fetch('https://api64.ipify.org?format=json');
         const ipData = await ipResponse.json();
         const ipAddress = ipData.ip;
 
-        // Second API call: Get location based on IP address
-        const locationResponse = await fetch(`https://ipapi.co/${ipAddress}/json/`);
+        const locationResponse = await fetch(https://ipapi.co/${ipAddress}/json/);
         const locationData = await locationResponse.json();
 
-        // Define the CORS Anywhere proxy URL
         const corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
 
-        // Third API call: Get weather using the first IP address
-        const weatherResponse1 = await fetch(`${corsAnywhere}https://api.openweathermap.org/data/2.5/weather?q=${locationData.city}&appid=ce230d3453722e45c36186794eb042dc`);
+        const weatherResponse1 = await fetch(`${corsAnywhere}https://api.openweathermap.org/data/2.5/weather?q=${locationData.city}&appid=8ca556f945684a72446448d26e7df5f7
+`);
         const weatherData1 = await weatherResponse1.json();
 
-        // Fourth API call: Get weather using the second API call location
-        const weatherResponse2 = await fetch(`${corsAnywhere}https://api.openweathermap.org/data/2.5/weather?q=${locationData.region}&appid=ce230d3453722e45c36186794eb042dc`);
+        const weatherResponse2 = await fetch(`${corsAnywhere}https://api.openweathermap.org/data/2.5/weather?q=${locationData.region}&appid=8ca556f945684a72446448d26e7df5f7
+`);
         const weatherData2 = await weatherResponse2.json();
 
-        // Log the results to the console
         console.log('Public IP Address:', ipAddress);
         console.log('Location Data:', locationData);
         console.log('Weather Data 1:', weatherData1);
@@ -42,7 +37,6 @@
       }
     }
 
-    // Call the function when the page has fully loaded
     window.addEventListener('load', makeApiRequests);
   </script>
 </body>
